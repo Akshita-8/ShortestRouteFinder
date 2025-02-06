@@ -25,7 +25,7 @@
     <div id="map"></div>
     <div id="route-details"></div> <!-- ✅ Added a div for route details -->
 
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCC54apeZkDKiY-JAbjF7yGV6CWP8lCluQ&libraries=geometry&callback=initMap" async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key={{ google_api_key }}&callback=initMap" async defer></script>
     <script>
         let map;
         let directionsService;

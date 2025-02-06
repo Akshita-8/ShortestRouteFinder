@@ -1,14 +1,21 @@
 from flask import Flask, render_template, request, jsonify
+from dotenv import load_dotenv
 import googlemaps
+import os  # Importing os to access environment variables
+
+# Load environment variables from the .env file
+load_dotenv()
 
 app = Flask(__name__)
 
 # Initialize Google Maps API client with your API key
-gmaps = googlemaps.Client(key='AIzaSyCC54apeZkDKiY-JAbjF7yGV6CWP8lCluQ')
+gmaps = googlemaps.Client(key=os.getenv('GOOGLE_API_KEY'))
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    # Pass the Google Maps API key to the template
+    google_api_key = os.getenv('GOOGLE_API_KEY')  # Get API key from environment variables
+    return render_template('index.html', google_api_key=google_api_key)
 
 @app.route('/route', methods=['POST'])
 def get_route():
